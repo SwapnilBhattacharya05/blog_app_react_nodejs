@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./routes/HomePage.jsx";
 import PostListPage from "./routes/PostListPage.jsx";
 import Write from "./routes/Write.jsx";
 import LoginPage from "./routes/LoginPage.jsx";
@@ -10,6 +9,7 @@ import RegisterPage from "./routes/RegisterPage.jsx";
 import SingePostPage from "./routes/SingePostPage.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
+import HomePage from "./routes/Homepage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <SingePostPage />,
       },
       {
-        path: "/wite",
+        path: "/write",
         element: <Write />,
       },
       {

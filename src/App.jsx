@@ -1,14 +1,15 @@
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar";
 
 const App = () => {
-    return (
-        <div className=''>
-            {/* BREADCRUMBS */}
-            {/* INTRODUCTION */}
-            {/* FEATURED TOAST */}
-            {/* POST LIST */}
-        </div>
-    )
-}
+  return (
+    <div className="">
+      <Navbar />
+      {/* BREADCRUMBS */}
+      {/* INTRODUCTION */}
+      {/* FEATURED TOAST */}
+      {/* POST LIST */}
+    </div>
+  );
+};
 
-export default App
+export default App;

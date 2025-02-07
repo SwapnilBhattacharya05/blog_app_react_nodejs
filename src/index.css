@@ -5,6 +5,10 @@
 body {
     background-color: #e6e6ff;
     width: 100vw;
-    overflow: hidden;
-    font-family: "Montserrat",sans-serif;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+}
+
+.animatedButton {
+    animation-duration: 10000ms;
 }
