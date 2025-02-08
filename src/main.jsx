@@ -6,10 +6,10 @@ import PostListPage from "./routes/PostListPage.jsx";
 import Write from "./routes/Write.jsx";
 import LoginPage from "./routes/LoginPage.jsx";
 import RegisterPage from "./routes/RegisterPage.jsx";
-import SingePostPage from "./routes/SingePostPage.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import HomePage from "./routes/Homepage.jsx";
+import SinglePostPage from "./routes/SinglePostPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       // SINCE IT WILL BE DYNAMIC
       {
         path: "/:slug",
-        element: <SingePostPage />,
+        element: <SinglePostPage />,
       },
       {
         path: "/write",

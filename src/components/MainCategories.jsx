@@ -25,7 +25,7 @@ const MainCategories = () => {
           Development
         </Link>
         <Link
-          to="/posts?cat=database"
+          to="/posts?cat=databases"
           className="rounded-full px-4 py-2 hover:bg-blue-50"
         >
           Database
