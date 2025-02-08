@@ -1,8 +1,7 @@
 import {
   SignedIn,
   SignedOut,
-  SignInButton,
-  UserButton,
+  UserButton
 } from "@clerk/clerk-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -10,7 +9,6 @@ import Image from "./Image";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  console.log(import.meta.env.VITE_IMAGEKIT_URL_ENDPOINT);
   return (
     <header className="w-full h-16 md:h-20 justify-between items-center flex">
       {/* lOGO */}
