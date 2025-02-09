@@ -20,13 +20,13 @@ const Write = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    img && setValue((prev) => prev + `<p><image src="${img.url}"/></p>`);
+    img && setValue((prev) => prev + `<p><image src="${img.url}" /></p>`);
   }, [img]);
 
   useEffect(() => {
     video &&
       setValue(
-        (prev) => prev + `<p><iframe class="ql-video" src="${video.url}"/></p>`
+        (prev) => prev + `<p><iframe class="ql-video" src="${video.url}" /></p>`
       );
   }, [video]);
 
@@ -69,7 +69,7 @@ const Write = () => {
       content: value,
     };
 
-    console.log(data);
+    // console.log(data);
 
     mutation.mutate(data);
   };
@@ -81,16 +81,27 @@ const Write = () => {
       <h1 className="text-cl font-light">Create a New Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 flex-1 mb-6">
         <Upload type="image" setProgress={setProgress} setData={setCover}>
-          <button className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white">
+          <button
+            type="button"
+            className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white"
+          >
             Add a cover image
           </button>
         </Upload>
+        <img
+          src={cover.url}
+          alt="cover"
+          className={`w-full h-80 object-cover rounded-3xl ${
+            !cover.url && "hidden"
+          }`}
+        />
         <input
           className="text-4xl font-semibold bg-transparent outline-none"
           type="text"
           placeholder="My Awesome Story"
           name="title"
         />
+
         <div className="flex items-center gap-4">
           <label htmlFor="" className="text-sm">
             Choose a category:
@@ -129,7 +140,7 @@ const Write = () => {
             className="flex-1 rounded-xl bg-white shadow-md"
             value={value}
             onChange={setValue}
-            readOnly={0 < progress && progress < 100}
+            readOnly={0 < progress && progress < 100 ? true : false}
           />
         </div>
         <button
@@ -138,7 +149,19 @@ const Write = () => {
         >
           {mutation.isPending ? "Loading..." : "Send"}
         </button>
-        {/* {"Progress:" + progress} */}
+        {0 < progress && progress < 100 && (
+          <div className="w-full mt-2 overflow-hidden">
+            <div className="text-sm mb-2">
+              Uploading: {Math.round((progress / 100) * 100)}%
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div
+                className="bg-green-600 h-2 rounded-full"
+                style={{ width: `${(progress / 100) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
         {/* {mutation.isError && <span>{mutation.error.message}</span>} */}
       </form>
     </div>

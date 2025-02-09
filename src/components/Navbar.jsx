@@ -9,9 +9,9 @@ const Navbar = () => {
   const { getToken } = useAuth();
 
   // TESTING TO GET A TOKEN
-  useEffect(() => {
-    getToken().then((token) => console.log(token));
-  }, []);
+  // useEffect(() => {
+  //   getToken().then((token) => console.log(token));
+  // }, []);
 
   return (
     <header className="w-full h-16 md:h-20 justify-between items-center flex">

@@ -17,7 +17,7 @@ const PostList = () => {
 
   if (error) return "An error has occurred: " + error.message;
   
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="flex flex-col gap-12 mb-8">
