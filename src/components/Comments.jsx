@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
+import axios from "axios";
 import Comment from "./Comment";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import { toast } from "react-toastify";
 
@@ -14,8 +13,6 @@ const fetchComments = async (postId) => {
 
 const Comments = ({ postId }) => {
   const { user } = useUser();
-  console.log(user);
-
   const { getToken } = useAuth();
 
   const { isPending, error, data } = useQuery({
@@ -53,7 +50,6 @@ const Comments = ({ postId }) => {
     const data = {
       desc: formData.get("desc"),
     };
-
     mutation.mutate(data);
   };
 
@@ -66,32 +62,28 @@ const Comments = ({ postId }) => {
       >
         <textarea
           name="desc"
-          className="w-full p-4 rounded-xl focus:outline-blue-400"
           placeholder="Write a comment..."
+          className="w-full p-4 rounded-xl"
           rows={2}
           style={{ resize: "none" }}
         />
-        <button
-          type="submit"
-          className="bg-blue-800 text-white px-4 py-3 font-medium rounded-xl"
-        >
+        <button className="bg-blue-800 px-4 py-3 text-white font-medium rounded-xl">
           Send
         </button>
       </form>
       {isPending ? (
         "Loading..."
       ) : error ? (
-        "Error Loading Comments!"
+        "Error loading comments!"
       ) : (
         <>
           {mutation.isPending && (
             <Comment
               comment={{
-                // VARAIBLE IS OUR NEW COMMENT AND THAT INCLUDES OUR DESCRIPTION => THE COMMENT
                 desc: (
-                  <span>
-                    {mutation.variables.desc}{" "}
-                    <div className="inline-block animate-spin">⏳</div>
+                  <span className="flex items-center gap-2">
+                    {mutation.variables.desc}
+                    <span className="animate-spin text-base">⏳</span>
                   </span>
                 ),
                 createdAt: new Date(),
@@ -102,8 +94,9 @@ const Comments = ({ postId }) => {
               }}
             />
           )}
+
           {data.map((comment) => (
-            <Comment key={comment._id} comment={comment} />
+            <Comment key={comment._id} comment={comment} postId={postId} />
           ))}
         </>
       )}

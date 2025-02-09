@@ -1,4 +1,4 @@
-import { useAuth, useUser } from "@clerk/clerk-react";
+import { useUser, useAuth } from "@clerk/clerk-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,8 @@ const PostMenuActions = ({ post }) => {
     },
   });
 
-  const isSaved = savedPosts?.data?.some((pid) => pid === post._id) || false;
+  const isAdmin = user?.publicMetadata?.role === "admin" || false;
+  const isSaved = savedPosts?.data?.some((p) => p === post._id) || false;
 
   const deleteMutation = useMutation({
     mutationFn: async () => {
@@ -46,12 +47,15 @@ const PostMenuActions = ({ post }) => {
   });
 
   const queryClient = useQueryClient();
+
   const saveMutation = useMutation({
     mutationFn: async () => {
       const token = await getToken();
       return axios.patch(
         `${import.meta.env.VITE_API_URL}/users/save`,
-        { postId: post._id },
+        {
+          postId: post._id,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -111,7 +115,8 @@ const PostMenuActions = ({ post }) => {
           {saveMutation.isPending && <span className="animate-spin">⌛</span>}
         </div>
       )}
-      {user && post.user.username === user.username && (
+
+      {user && (post?.user?.username === user?.username || isAdmin) && (
         <div
           className="flex items-center gap-2 py-2 text-sm cursor-pointer"
           onClick={handleDelete}

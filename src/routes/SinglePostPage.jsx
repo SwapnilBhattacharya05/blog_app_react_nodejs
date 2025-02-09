@@ -36,7 +36,7 @@ const SinglePostPage = () => {
           </h1>
           <div className="flex items-center gap-2 text-gray-400 text-sm">
             <span>Written by</span>
-            <Link className="text-blue-800">{data.user.username}</Link>
+            <Link className="text-blue-800">{data?.user?.username}</Link>
             <span>on</span>
             <Link className="text-blue-800">{data.category}</Link>
             <span>{format(data.createdAt)}</span>
@@ -45,7 +45,7 @@ const SinglePostPage = () => {
         </div>
         {data.img && (
           <div className="hidden lg:block w-2/5">
-            <Image src={data.img} className="rounded-2xl" w={600} />
+            <Image src={data.img} className="rounded-2xl" w={600} h={400} />
           </div>
         )}
       </div>
@@ -74,7 +74,7 @@ const SinglePostPage = () => {
                   width={48}
                 />
               )}
-              <Link className="text-blue-800">{data.user.username}</Link>
+              <Link className="text-blue-800">{data?.user?.username}</Link>
             </div>
             <p className="text-sm text-gray-500">Lorem ipsum dolor sit amet.</p>
             <div className="flex gap-2">
