@@ -8,7 +8,7 @@ const FeaturedPosts = () => {
       <div className="w-full lg:w-1/2 flex flex-col gap-4">
         {/* IMAGE */}
         <Image
-          path="featured1.jpeg"
+          src="featured1.jpeg"
           className="rounded-3xl object-cover"
           /*
            * CALCULATION
@@ -39,7 +39,7 @@ const FeaturedPosts = () => {
         <div className="lg:h-1/3 flex justify-between gap-4">
           <div className="w-1/3 aspect-video">
             <Image
-              path="featured2.jpeg"
+              src="featured2.jpeg"
               className="rounded-3xl object-cover w-full h-full"
               /*
                * CALCULATION
@@ -73,7 +73,7 @@ const FeaturedPosts = () => {
         <div className="lg:h-1/3 flex justify-between gap-4">
           <div className="w-1/3 aspect-video">
             <Image
-              path="featured3.jpeg"
+              src="featured3.jpeg"
               className="rounded-3xl object-cover w-full h-full"
               /*
                * CALCULATION
@@ -107,7 +107,7 @@ const FeaturedPosts = () => {
         <div className="lg:h-1/3 flex justify-between gap-4">
           <div className="w-1/3 aspect-video">
             <Image
-              path="featured4.jpeg"
+              src="featured4.jpeg"
               className="rounded-3xl object-cover w-full h-full"
               /*
                * CALCULATION

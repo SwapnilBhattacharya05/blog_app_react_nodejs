@@ -17,7 +17,7 @@ const Navbar = () => {
     <header className="w-full h-16 md:h-20 justify-between items-center flex">
       {/* lOGO */}
       <Link to={"/"} className="flex items-center gap-4 text-2xl font-bold">
-        <Image path="logo.png" alt="logo" w={32} h={32} />
+        <Image src="blog_app/logo.png" alt="logo" w={32} h={32} />
         <span>ZelLog</span>
       </Link>
 
